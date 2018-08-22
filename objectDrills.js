@@ -55,3 +55,11 @@ function keyDeleter(obj) {
 function makeStudentsReport(data) {
   return data.map(student => `${student.name}: ${student.grade}`);
 }
+
+
+// Enroll in Summer School
+
+function enrollInSummerSchool(students) {
+  students.forEach(student => student.status = 'In Summer school');
+  return students;
+}
