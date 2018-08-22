@@ -50,3 +50,8 @@ function keyDeleter(obj) {
 
   return obj;
 }
+
+// Make student reports
+function makeStudentsReport(data) {
+  return data.map(student => `${student.name}: ${student.grade}`);
+}
