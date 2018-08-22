@@ -192,44 +192,76 @@ console.log(decodeWords(message));
 
 // Factory Functions with LOTR
 
-function createCharacter(name, nickname, race, origin, attack, defense) {
-  return {
-    name,
-    nickname,
-    race,
-    origin,
-    attack,
-    defense,
-    describe: function() {
-      if (this.weapon) { 
-        console.log(`${this.name} is a ${race} from ${origin} who uses ${this.weapon}.`);
-      } else { console.log(`${this.name} is a ${race} from ${origin}.`);
-      }
-    },
-    evaluateFight: function(character) {
-      // Gandalf attacks Frodo
-      // character = Frodo
-      let x = this.attack - character.defense;
-      let y = character.attack - this.defense;
-      if (x < 0) x = 0;
-      if (y < 0) y = 0;
-      return `Your opponent takes ${x} damage and you receive ${y} damage`;
-    },
-    equipWeapon: function(weapon) {
-      this.weapon = weapon;
-    }
-  };
+// function createCharacter(name, nickname, race, origin, attack, defense) {
+//   return {
+//     name,
+//     nickname,
+//     race,
+//     origin,
+//     attack,
+//     defense,
+//     describe: function() {
+//       if (this.weapon) { 
+//         console.log(`${this.name} is a ${race} from ${origin} who uses ${this.weapon}.`);
+//       } else { console.log(`${this.name} is a ${race} from ${origin}.`);
+//       }
+//     },
+//     evaluateFight: function(character) {
+//       // Gandalf attacks Frodo
+//       // character = Frodo
+//       let x = this.attack - character.defense;
+//       let y = character.attack - this.defense;
+//       if (x < 0) x = 0;
+//       if (y < 0) y = 0;
+//       return `Your opponent takes ${x} damage and you receive ${y} damage`;
+//     },
+//     equipWeapon: function(weapon) {
+//       this.weapon = weapon;
+//     }
+//   };
+// }
+
+function Character(name, nickname, race, origin, attack, defense) {
+   
+  this.name = name;
+  this.nickname = nickname;
+  this.race = race;
+  this.origin = origin;
+  this.attack = attack;
+  this.defense = defense;
 }
 
+Character.prototype.describe = function() {
+  // if (this.weapon) { 
+  //   console.log(`${this.name} is a ${this.race} from ${this.origin} who uses ${this.weapon}.`);
+  // } else { console.log(`${this.name} is a ${this.race} from ${this.origin}.`);
+  // }
+  let sentence = `${this.name} is a ${this.race} from ${this.origin}.`;
+  if this.weapon ? console.log(`${sentence} who uses ${this.weapon}`) : console.log(sentence);
+};
+
+Character.prototype.evaluateFight = function(character) {
+  let x = this.attack - character.defense;
+  let y = character.attack - this.defense;
+  if (x < 0) x = 0;
+  if (y < 0) y = 0;
+  return `Your opponent takes ${x} damage and you receive ${y} damage`;
+};
+
+Character.prototype.equipWeapon = function(weapon) {
+  this.weapon = weapon;
+};
+
+
 let characters = [
-  createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6),
-  createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1),
-  createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2),
-  createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8),
-  createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5)
+  new Character('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6),
+  new Character('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1),
+  new Character('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2),
+  new Character('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8),
+  new Character('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5)
 ];
 
-characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-elf', 'Rivendell', 5, 5));
+characters.push(new Character('Arwen Undomiel', 'arwen', 'Half-elf', 'Rivendell', 5, 5));
 
 characters.find(name => name.nickname === 'aragorn').describe();
 // console.log(characters);
