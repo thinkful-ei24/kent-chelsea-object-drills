@@ -1,3 +1,5 @@
+'use strict';
+
 function createMyObject() {
   return { 
     foo: 'bar',
@@ -6,7 +8,7 @@ function createMyObject() {
     sayHello: function() {
       return 'hello';
     }
-  }
+  };
 }
 
 // Object updater
@@ -76,11 +78,11 @@ function findById(items, idNum) {
 function validateKeys(object, expectedKeys) {
   if (Object.keys(object).length !== expectedKeys.length) return false;
 
-	for (let i = 0; i < expectedKeys.length; i++) {
-		if (!Object.keys(object).includes(expectedKeys[i])) return false;
-	}
+  for (let i = 0; i < expectedKeys.length; i++) {
+    if (!Object.keys(object).includes(expectedKeys[i])) return false;
+  }
 
-	return true;
+  return true;
 }
 
 // Advanced Object Drills
@@ -92,7 +94,7 @@ const loaf = {
   hydration: function() {
     return (this.water / this.flour) * 100;
   }
-}
+};
 
 console.log(loaf.flour);
 console.log(loaf.water);
@@ -102,15 +104,15 @@ console.log(loaf.hydration());
 //Iterating over an object's properties
 
 let random = {
-	foo: 2,
-	bar: 4,
-	fum: 6, 
-	quux: 8,
-	spam: 10
-}
+  foo: 2,
+  bar: 4,
+  fum: 6, 
+  quux: 8,
+  spam: 10
+};
 
 for (key in random) {
-	console.log(`${key} is ${random[key]}`);
+  console.log(`${key} is ${random[key]}`);
 }
 
 //Arrays in objects
@@ -123,36 +125,69 @@ console.log(hobbit.meals[3]);
 //Arrays of objects
 
 let people = [
-	{
-		name: 'Chelsea',
-		jobTitle: 'human'
-	},
-	{
-		name: 'Kent',
-		jobTitle: 'human'
-	},
-	{
-		name: 'R2D2',
-		jobTitle: 'robot'
-	},
-	{
-		name: 'Siri',
-		jobTitle: 'AI'
-	}
-]
+  {
+    name: 'Chelsea',
+    jobTitle: 'human'
+  },
+  {
+    name: 'Kent',
+    jobTitle: 'human'
+  },
+  {
+    name: 'R2D2',
+    jobTitle: 'robot'
+  },
+  {
+    name: 'Siri',
+    jobTitle: 'AI'
+  }
+];
 
 people.forEach(person => console.log(`${person.name} is a ${person.jobTitle}`));
 
 // Properties that aren't there
 
-people.forEach(person => {if (person.name !== 'Siri') person.boss = 'Siri'});
+people.forEach(person => {if (person.name !== 'Siri') person.boss = 'Siri';});
 
 people.forEach(person => {
   if (person.boss) {
-    console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`)
+    console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`);
   } else {
-    console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`)
+    console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`);
   }
 });
+
+//Cracking the code
+
+let message = 'craft block argon meter bells brown croon droop';
+
+let cipher = {
+  a:	2,
+  b:	3,
+  c:	4,
+  d:	5
+};
+
+let decode = (encodedWord) => {
+  if(cipher[encodedWord[0]]) {
+    return encodedWord[cipher[encodedWord[0]] -1];
+  } else {
+    return ' ';
+  }
+  //return correct decoded character
+};
+
+console.log(decode('craft'));
+
+let decodeWords = (message) => {
+  let messageArr =	message.split(' ');
+
+  return messageArr.reduce((decodedMessage, word) => {
+    return decodedMessage += decode(word);
+  }, '');
+  //return fully decoded message as a string
+};
+console.log(decodeWords(message));
+
 
 //
