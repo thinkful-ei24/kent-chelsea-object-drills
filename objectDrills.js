@@ -119,3 +119,28 @@ let hobbit = {
 };
 
 console.log(hobbit.meals[3]);
+
+//Arrays of objects
+
+let people = [
+	{
+		name: 'Chelsea',
+		jobTitle: 'human'
+	},
+	{
+		name: 'Kent',
+		jobTitle: 'human'
+	},
+	{
+		name: 'R2D2',
+		jobTitle: 'robot'
+	},
+	{
+		name: 'Siri',
+		jobTitle: 'AI'
+	}
+]
+
+people.forEach(person => console.log(`${person.name} is a ${person.jobTitle}`));
+
+//
