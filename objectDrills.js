@@ -201,7 +201,10 @@ function createCharacter(name, nickname, race, origin, attack, defense) {
     attack,
     defense,
     describe: function() {
-      console.log(`${this.name} is a ${race} from ${origin}.`);
+      if (this.weapon) { 
+        console.log(`${this.name} is a ${race} from ${origin} who uses ${this.weapon}.`);
+      } else { console.log(`${this.name} is a ${race} from ${origin}.`);
+      }
     },
     evaluateFight: function(character) {
       // Gandalf attacks Frodo
@@ -211,8 +214,11 @@ function createCharacter(name, nickname, race, origin, attack, defense) {
       if (x < 0) x = 0;
       if (y < 0) y = 0;
       return `Your opponent takes ${x} damage and you receive ${y} damage`;
+    },
+    equipWeapon: function(weapon) {
+      this.weapon = weapon;
     }
-  }
+  };
 }
 
 let characters = [
@@ -227,3 +233,13 @@ characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-elf', 'Rivendel
 
 characters.find(name => name.nickname === 'aragorn').describe();
 // console.log(characters);
+
+let hobbits = characters.filter(name => name.race === 'Hobbit');
+// console.log(hobbits);
+
+let higherThanFive = characters.filter(name => name.attack > 5);
+// console.log(higherThanFive);
+
+characters.find(name => name.nickname === 'aragorn').equipWeapon('Anduril');
+characters.find(name => name.nickname === 'aragorn').describe();
+// console.log(characters[3]);
