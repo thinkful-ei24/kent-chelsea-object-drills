@@ -190,39 +190,11 @@ let decodeWords = (message) => {
 console.log(decodeWords(message));
 
 
+
+
 // Factory Functions with LOTR
 
-// function createCharacter(name, nickname, race, origin, attack, defense) {
-//   return {
-//     name,
-//     nickname,
-//     race,
-//     origin,
-//     attack,
-//     defense,
-//     describe: function() {
-//       if (this.weapon) { 
-//         console.log(`${this.name} is a ${race} from ${origin} who uses ${this.weapon}.`);
-//       } else { console.log(`${this.name} is a ${race} from ${origin}.`);
-//       }
-//     },
-//     evaluateFight: function(character) {
-//       // Gandalf attacks Frodo
-//       // character = Frodo
-//       let x = this.attack - character.defense;
-//       let y = character.attack - this.defense;
-//       if (x < 0) x = 0;
-//       if (y < 0) y = 0;
-//       return `Your opponent takes ${x} damage and you receive ${y} damage`;
-//     },
-//     equipWeapon: function(weapon) {
-//       this.weapon = weapon;
-//     }
-//   };
-// }
-
 function Character(name, nickname, race, origin, attack, defense) {
-   
   this.name = name;
   this.nickname = nickname;
   this.race = race;
@@ -232,12 +204,8 @@ function Character(name, nickname, race, origin, attack, defense) {
 }
 
 Character.prototype.describe = function() {
-  // if (this.weapon) { 
-  //   console.log(`${this.name} is a ${this.race} from ${this.origin} who uses ${this.weapon}.`);
-  // } else { console.log(`${this.name} is a ${this.race} from ${this.origin}.`);
-  // }
-  let sentence = `${this.name} is a ${this.race} from ${this.origin}.`;
-  if this.weapon ? console.log(`${sentence} who uses ${this.weapon}`) : console.log(sentence);
+  let sentence = `${this.name} is a ${this.race} from ${this.origin}`;
+  this.weapon ? console.log(`${sentence} who uses ${this.weapon}`) : console.log(sentence)
 };
 
 Character.prototype.evaluateFight = function(character) {
@@ -275,6 +243,8 @@ let higherThanFive = characters.filter(name => name.attack > 5);
 characters.find(name => name.nickname === 'aragorn').equipWeapon('Anduril');
 characters.find(name => name.nickname === 'aragorn').describe();
 // console.log(characters[3]);
+
+
 
 // BONUS: A Database Search
 const HEROES = [
