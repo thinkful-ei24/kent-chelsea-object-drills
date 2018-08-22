@@ -225,5 +225,5 @@ let characters = [
 
 characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-elf', 'Rivendell', 5, 5));
 
-characters.find(name => name.nickname === 'aragorn');
+characters.find(name => name.nickname === 'aragorn').describe();
 // console.log(characters);
