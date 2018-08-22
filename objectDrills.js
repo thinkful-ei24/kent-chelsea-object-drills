@@ -284,20 +284,12 @@ const Database = {
       { id: 7, name: 'Hulk', squad: 'Avengers' },
     ]
   },
-  findOne: function(query) {
-    let result = this.store.heroes.find(heroObject => {
-      for (let i = 0; i < Object.keys(query).length; i++) {
-        if (!Object.keys(heroObject).includes(Object.keys(query)[i])) return false;
-        if (heroObject[Object.keys(query)[i]] !== query[Object.keys(query)[i]]) return false;
-      }
-      return true;
-    });
-  
-    if (result === undefined) result = null;
-    return result;
+  findOne: function(query){
+    let arr = this.store.heroes;
+    return findOne(arr, query);
   }
 }
 
 
-console.log(Database.findOne({ id: 2 }));
+console.log(Database.findOne({ id: 2}));
 // => { id: 2, name: 'Iron Man', squad: 'Avengers' }
