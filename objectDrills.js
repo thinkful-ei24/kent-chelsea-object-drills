@@ -97,3 +97,20 @@ const loaf = {
 console.log(loaf.flour);
 console.log(loaf.water);
 console.log(loaf.hydration());
+
+
+//Iterating over an object's properties
+
+let random = {
+	foo: 2,
+	bar: 4,
+	fum: 6, 
+	quux: 8,
+	spam: 10
+}
+
+for (key in random) {
+	console.log(`${key} is ${random[key]}`);
+}
+
+//
