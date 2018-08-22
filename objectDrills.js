@@ -18,6 +18,18 @@ function updateObject(obj) {
   obj.bizz = 'bizz'
   obj.bang = 'bang'
   
- return obj;
+  return obj;
 }
 
+// Self-reference
+
+function personMaker() {
+  var person = {
+    firstName: 'Paul',
+    lastName: 'Jones',
+    fullName: function() { 
+      return `${this.firstName} ${this.lastName}`;
+    }
+  };
+  return person;
+}
