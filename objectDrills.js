@@ -113,4 +113,9 @@ for (key in random) {
 	console.log(`${key} is ${random[key]}`);
 }
 
-//
+//Arrays in objects
+let hobbit = {
+  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper']
+};
+
+console.log(hobbit.meals[3]);
