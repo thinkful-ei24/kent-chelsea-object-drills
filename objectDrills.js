@@ -111,7 +111,7 @@ let random = {
   spam: 10
 };
 
-for (key in random) {
+for (let key in random) {
   console.log(`${key} is ${random[key]}`);
 }
 
@@ -243,3 +243,31 @@ let higherThanFive = characters.filter(name => name.attack > 5);
 characters.find(name => name.nickname === 'aragorn').equipWeapon('Anduril');
 characters.find(name => name.nickname === 'aragorn').describe();
 // console.log(characters[3]);
+
+// BONUS: A Database Search
+const HEROES = [
+  { id: 1, name: 'Captain America', squad: 'Avengers' },
+  { id: 2, name: 'Iron Man', squad: 'Avengers' },
+  { id: 3, name: 'Spiderman', squad: 'Avengers' },
+  { id: 4, name: 'Superman', squad: 'Justice League' },
+  { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+  { id: 6, name: 'Aquaman', squad: 'Justice League' },
+  { id: 7, name: 'Hulk', squad: 'Avengers' },
+];
+
+function findOne(arr, query) {
+  let result = arr.find(heroObject => {
+    // loop through query keys
+    // Object.keys(query) => array of keys
+    for (let i = 0; i < Object.keys(query).length; i++) {
+      if (!Object.keys(heroObject).includes(Object.keys(query)[i])) return false;
+      if (heroObject[Object.keys(query)[i]] !== query[Object.keys(query)[i]]) return false;
+    }
+    return true;
+  });
+
+  if (result === undefined) result = null;
+  return result;
+}
+
+//
