@@ -143,4 +143,16 @@ let people = [
 
 people.forEach(person => console.log(`${person.name} is a ${person.jobTitle}`));
 
+// Properties that aren't there
+
+people.forEach(person => {if (person.name !== 'Siri') person.boss = 'Siri'});
+
+people.forEach(person => {
+  if (person.boss) {
+    console.log(`${person.jobTitle} ${person.name} reports to ${person.boss}.`)
+  } else {
+    console.log(`${person.jobTitle} ${person.name} doesn't report to anybody.`)
+  }
+});
+
 //
